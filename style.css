@@ -41,6 +41,17 @@ canvas {
   border-bottom-color: white; /* 포커스 시 밑줄 색상 변경 */
 }
 
+.styled-input::placeholder {
+  color: #757575; /* 흐릿한 회색 */
+  /*opacity: 1; /* 브라우저 기본값 덮어쓰기 */
+}
+
+.styled-input:focus::placeholder {
+  color: transparent; /* 포커스 시 placeholder 투명하게 */
+}
+
+
+
 .styled-sendbutton {
   border: none;
   width: 46px;
@@ -91,6 +102,11 @@ canvas {
   width: 70%; /* 이미지 크기 */
   height: 70%; /* 이미지 크기 */
 }
+
+.styled-recbutton:disabled {
+  background-color: #757575;
+}
+
 
 .styled-startbutton {
   border: none;

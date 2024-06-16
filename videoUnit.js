@@ -91,10 +91,9 @@ class VideoUnit {
       this.onvideo.play();
     }
 
-    let textDisplayTimeout = setTimeout(() => {
-      this.textDisplayed = true;
-      clearTimeout(textDisplayTimeout);
-    }, 1000);
+    this.textDisplayed = true;
+    clearTimeout(textDisplayTimeout);
+ 
 
     /*
     setTimeout(() => {
@@ -120,11 +119,4 @@ class VideoUnit {
     this.loopvideo.pause();
   }
 
-  captureImage() {
-    this.onvideo.pause();
-    this.frozenFrame = createImage(1920, 1080);
-    this.onvideo.loadPixels();
-    this.frozenFrame.copy(this.video, 0, 0, 1920, 1080, 0, 0, 1920, 1080);
-    console.log("captureimage작동", this.frozenFrame);
-  }
 }

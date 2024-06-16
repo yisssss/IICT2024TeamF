@@ -7,7 +7,8 @@ class Dialogue {
     textTime,
     endvideo,
     inputRequired = false,
-    storeInput = false
+    storeInput = false,
+    placeholderMessage = ""
   ) {
     this.video = video;
     this.text = text;
@@ -21,6 +22,8 @@ class Dialogue {
 
     this.currentTextIndex = 0;
     this.lastTextChangeTime = 0;
+
+    this.placeholderMessage = placeholderMessage;
   }
 
   display() {
@@ -39,6 +42,8 @@ class Dialogue {
       sendButton.show();
       recButton.show();
 
+      input.attribute('placeholder', this.placeholderMessage);
+
       fill(240);
       textAlign(CENTER, TOP);
       textFont("Orbit");
@@ -47,7 +52,7 @@ class Dialogue {
         "음성 인식 혹은 타자 입력을 통한 답변 모두 가능합니다.",
         0,
         height - 35,
-        wdWidth,
+        wdWidth+200,
         height 
       );
     
