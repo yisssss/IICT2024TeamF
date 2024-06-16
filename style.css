@@ -1,0 +1,172 @@
+
+.orbit-regular {
+  font-family: "Orbit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Orbit", sans-serif;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+  font-family: "Orbit", sans-serif;
+}
+
+.styled-input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid gray;
+  width: 960px;
+  height: 56px;
+  padding: 10px 5px;
+  font-size: 24px;
+  text-align: center;
+  outline: none;
+  resize: none;
+  line-height: 24px;
+  overflow: hidden;
+  font-family: "Orbit", sans-serif;
+  color: white;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+}
+
+.styled-input:focus {
+  border-bottom-color: white; /* 포커스 시 밑줄 색상 변경 */
+}
+
+.styled-sendbutton {
+  border: none;
+  width: 46px;
+  height: 46px;
+  padding: 6px 6px;
+  justify-content: center;
+  align-items: center;
+  background-color: #757575;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+}
+
+.styled-sendbutton:hover {
+  background-color: white;
+}
+
+.styled-sendbutton img {
+  width: 50%; /* 이미지 크기 */
+  height: 50%; /* 이미지 크기 */
+}
+
+
+.styled-sendbutton:disabled {
+  background-color: #757575;
+}
+
+.styled-recbutton {
+  border: none;
+  width: 46px;
+  height: 46px;
+  padding: 6px 8px;
+  justify-content: center;
+  align-items: center;
+  background-color: #757575;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+}
+
+.styled-recbutton:hover {
+  background-color: white;
+}
+
+.styled-recbutton img {
+  width: 70%; /* 이미지 크기 */
+  height: 70%; /* 이미지 크기 */
+}
+
+.styled-startbutton {
+  border: none;
+  width: 80px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+  font-family: "Orbit", sans-serif;
+  color: black;
+  font-size: 24px;
+  text-align: center;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+
+.styled-resetPopup {
+  
+  font-family: "Orbit", sans-serif;
+  font-size: 36px;
+  color: black;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 40px;
+  position: fixed;
+  border-radius: 30px;
+  top: 50px;
+  left: 570px;
+  text-align: center;
+  width: 700px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around; /* 버튼 사이에 공간을 균등하게 분배 */
+  margin: 10px;
+}
+
+.styled-continueButton,
+.styled-resetButton {
+  
+  font-family: "Orbit", sans-serif;
+  padding: 10px;
+  padding-bottom: 12px;
+  border: none;
+  margin: 30px 10px;
+
+
+  border-radius: 30px;
+  font-size: 24px;
+  cursor: pointer;
+  width: 200px;
+}
+
+
+.styled-continueButton {
+  background-color: lightgray;
+  color: black;
+}
+
+
+.styled-continueButton:hover {
+  background-color: white;
+  color: black;
+}
+
+
+.styled-resetButton {
+  background-color: rgb(46, 46, 46);
+  color: white;
+}
+
+.styled-resetButton:hover {
+  background-color: black;
+  color: white;
+}
