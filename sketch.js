@@ -1127,7 +1127,9 @@ function keyPressed() {
   if (keyCode == ENTER) {
     sendMessage();
   } else if (keyCode == 192){
-    big_stage++;
+    big_stage = 2;
+    currentStageIntro = 0;
+    bgm.loop();
   }
 
 }
