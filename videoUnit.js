@@ -92,7 +92,7 @@ class VideoUnit {
     }
 
     this.textDisplayed = true;
-    clearTimeout(textDisplayTimeout);
+    //clearTimeout(textDisplayTimeout);
  
 
     /*

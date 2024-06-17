@@ -87,7 +87,7 @@ canvas {
   padding: 6px 8px;
   justify-content: center;
   align-items: center;
-  background-color: #757575;
+  background-color: #757575 !important;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -95,7 +95,11 @@ canvas {
 }
 
 .styled-recbutton:hover {
-  background-color: white;
+  background-color: white !important;
+}
+
+.styled-recbutton:focus {
+  background-color: white !important;
 }
 
 .styled-recbutton img {

@@ -164,7 +164,7 @@ let textScripts = [
   [
     //19
     "ㅤ",
-    "그럼 그 친구는 당신의 어떤 부분을 좋아했을 것 같나요? ",
+    "그럼 그 친구는 당신의 어떤 부분을 좋아했을 것 같나요?",
   ],
   [
     //20
@@ -222,7 +222,6 @@ let textScripts = [
     "ㅤ",
     "입에서 입으로.",
     "입에서 입으로,",
-    "입에서 입으로,",
     "입에서",
     "입에서 입에서",
     "입에서 입에서 입에서 입에서 입에서 입에서",
@@ -274,7 +273,7 @@ let textScriptTimees = [
   [3, 100],
   [3, 100],
   //20
-  [3, 5, 10],
+  [3, 5, 100],
   [3, 3, 4, 100],
   [3, 100],
   [3, 3, 10],
@@ -283,7 +282,7 @@ let textScriptTimees = [
   [1.5, 3, 4],
   [3, 5, 10],
   [3, 2.5, 1, 10],
-  [3, 7, 1, 1.5, 1.5, 0.5, 0.5, 1, 6, 10],
+  [3, 7, 1, 1.5, 2, 0.5, 0.5, 1, 5, 10],
   [10],
   [10],
   [3],
@@ -549,7 +548,7 @@ function setup() {
 
   recButton = createButton("");
   recButton.class("styled-recbutton");
-  recButton.position(wdWidth / 2 + 540 - 110, wdHeight - 105);
+  recButton.position(wdWidth / 2 + 540 - 115, wdHeight - 105);
   let recImg = createImg("assets/icon2.png");
   recImg.parent(recButton);
 
@@ -717,7 +716,7 @@ function draw() {
 
       if (speechReady2) {
         volume = mic.getLevel();
-        let volSize = map(volume, 0, 0.04, 5, 35);
+        let volSize = map(volume, 0, 0.03, 5, 35);
         fill(255, 80);
         ellipse(
           recButton2.x + 32,
@@ -738,9 +737,10 @@ function draw() {
       recButton2.hide();
 
         louderBGM();
+
       if (speechReady) {
         volume = mic.getLevel();
-        let volSize = map(volume, 0, 0.04, 5, 30);
+        let volSize = map(volume, 0, 0.03, 5, 35);
         fill(255, 80);
         ellipse(recButton.x + 23, recButton.y + 23, volSize + 46, volSize + 46);
       }
@@ -960,7 +960,6 @@ function draw() {
           }
         } else {
           console.log("case6으로 넘어가는중");
-          dialogues[currentStageOutro].endVideo();
           big_stage += 1;
         }
 
@@ -987,7 +986,6 @@ function draw() {
         chat1scale = 1;
         chat2scale = 2;
         userName = "";
-        friendName = "";
         haveFriend = false;
 
         for (let i = 0; i <= 14; i++) {
@@ -1026,7 +1024,7 @@ function mouseClicked() {
 function gameStart() {
   big_stage = 1;
   //dialogues31videoPlayed = true;
-  //currentStageIntro = 14; // 서론(1~13, 질문 1,2, 6,7, 10,11)/ 결론부(15) 비디오 번호
+  //currentStageIntro = 19; // 서론(1~13, 질문 1,2, 6,7, 10,11)/ 결론부(15) 비디오 번호
   //currentVideoIndex = 6; // 본론부
 }
 
@@ -1196,7 +1194,7 @@ function sendMessage() {
     } else if (currentStageIntro == 12) {
       responseTodialogue12 = message;
       nextDialogue();
-      OpenaiFetchSubtitles_noFriend();
+      OpenaiFetchSubtitlesnoFriend();
 
       //친구 있
     } else if (currentStageIntro == 14) {
@@ -1208,7 +1206,7 @@ function sendMessage() {
     } else if (currentStageIntro == 19) {
       responseTodialogue19 = message;
       nextDialogue();
-      OpenaiFetchSubtitles_yesFriend();
+      OpenaiFetchSubtitlesyesFriend();
     } else {
       nextDialogue();
     }

@@ -52,7 +52,7 @@ class Dialogue {
         "음성 인식 혹은 타자 입력을 통한 답변 모두 가능합니다.",
         0,
         height - 35,
-        wdWidth+200,
+        wdWidth,
         height 
       );
     
