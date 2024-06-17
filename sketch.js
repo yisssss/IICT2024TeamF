@@ -1126,7 +1126,10 @@ function onSpeechEnd() {
 function keyPressed() {
   if (keyCode == ENTER) {
     sendMessage();
+  } else if (keyCode == 192){
+    big_stage++;
   }
+
 }
 
 function record() {
