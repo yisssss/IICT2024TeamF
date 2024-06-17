@@ -584,7 +584,7 @@ function setup() {
       setWaiting(false);
       let said = speechRec2.resultString;
       console.log("Heard in case 1: ", said);
-      if (/[타파사카차하가바빠까](인|임|이)/.test(said)) {
+      if (/[타파사카차하가바빠다까](인|임|이)/.test(said)) {
         big_stage = 2;
         currentStageIntro = 0;
         bgm.loop();
@@ -708,6 +708,18 @@ function draw() {
           wdHeight - 300,
           1080,
           height - 140
+        );
+        fill(240,240,120);
+        textSize(18);
+        textAlign(CENTER, TOP);
+        textFont("Orbit");
+        text(
+          `본 사이트에는 영상 내 섬광 장면이 일부 포함되어 있습니다.
+          빛에 예민한 사용자 님께서는 유의 부탁드립니다.`,
+          wdWidth / 2 - 540,
+          80,
+          1080,
+          height - 200
         );
       } else {
         dialogues[29].stop();
@@ -1127,9 +1139,7 @@ function keyPressed() {
   if (keyCode == ENTER) {
     sendMessage();
   } else if (keyCode == 192){
-    big_stage = 2;
-    currentStageIntro = 0;
-    bgm.loop();
+    big_stage++;
   }
 
 }
