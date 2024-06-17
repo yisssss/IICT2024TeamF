@@ -255,7 +255,7 @@ let textScriptTimees = [
   [3, 4, 5.5, 10],
   [3, 3, 100],
   //5
-  [3, 4,10],
+  [3, 4, 10],
   [3, 3, 10],
   [3, 4, 10],
   [3, 2, 100],
@@ -1140,6 +1140,8 @@ function keyPressed() {
     sendMessage();
   } else if (keyCode == 192){
     big_stage++;
+    bgm.loop();
+    currentStageIntro = 0;
   }
 
 }
