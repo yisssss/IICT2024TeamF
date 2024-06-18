@@ -1034,7 +1034,7 @@ function mouseClicked() {
 }
 
 function gameStart() {
-  big_stage = 1;
+  big_stage = 3;
   //dialogues31videoPlayed = true;
   //currentStageIntro = 19; // 서론(1~13, 질문 1,2, 6,7, 10,11)/ 결론부(15) 비디오 번호
   //currentVideoIndex = 6; // 본론부
@@ -1140,8 +1140,6 @@ function keyPressed() {
     sendMessage();
   } else if (keyCode == 192){
     big_stage++;
-    bgm.loop();
-    currentStageIntro = 0;
   }
 
 }
