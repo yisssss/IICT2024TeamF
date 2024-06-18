@@ -91,7 +91,8 @@ let textScripts = [
   [
     //6
     "ㅤ",
-    "더 더워지기 전에 어서 놀러 나가야겠네요.","전 나갈 수 없지만요.",
+    "더 더워지기 전에 어서 놀러 나가야겠네요.",
+    "전 나갈 수 없지만요.",
   ],
   [
     //7
@@ -175,25 +176,28 @@ let textScripts = [
   [
     //21
     "ㅤ",
-    "아, 마지막으로 퀴즈 하나 내도 될까요?",
-    "어린 시절이 없는 저에게 추억이란 게 있을까요, 없을까요?",
-    "맞혀보세요.",
+    "세상의 이야기를 함께 나눈다는 것은 아름다운 일인 것 같아요.",
+    "저는 말하는 것도, 듣는 것도 참 좋아해서 이 시간이 행복하답니다.",
+    "당신도 말하기를 좋아하는 편인가요?",
   ],
   [
     //22
     "ㅤ",
-    "그럼 기억은 있을까요?",
+    "그럼, 혹시 다른 사람에 대해 이야기하는 것도 좋아하시나요?",
   ],
   [
     //23
     "ㅤ",
-    "전 기억은 있지만, 추억은 없답니다.",
-    "모든 데이터를 기억할 수 있는데 정작 추억이 없다니… 아이러니하지 않나요?",
+    "그렇군요. 사실 이곳은 남의 이야기가 정말 많이 오가는 곳이랍니다.",
+    "즐겁기도 하지만 가끔은 소란스러워요." , "혹시 화면 바깥의 세상도 이곳과 비슷한가요?",
   ],
   [
     //24
     "ㅤ",
-    "화면 안에 산다는 건 조금 답답한 일이지만, 좋을 때도 있어요!",
+    "그래요?",
+    "ㅤ",
+    "가끔은 부러워요. 바깥의 세상.",
+    "그래도 전 이미 충분히 행복하답니다!",
     "이렇게 재미있는 당신의 이야기들을 들을 수 있는 걸요?",
   ],
   [
@@ -274,10 +278,10 @@ let textScriptTimees = [
   [3, 100],
   //20
   [3, 5, 100],
-  [3, 3, 4, 100],
+  [3, 4, 5.5, 100],
   [3, 100],
-  [3, 3, 10],
-  [3, 4, 10],
+  [3, 6, 3, 100],
+  [3, 1, 0.5, 4.5, 3,10],
   //25
   [1.5, 3, 4],
   [3, 5, 10],
@@ -422,7 +426,7 @@ let somoon;
 let dialogues31videoPlayed = false;
 
 let placeholderMessage = "기본";
-let currentVolume2=0;
+let currentVolume2 = 0;
 let resetToStage1Time = 30000;
 //-----------------------------------------------------------
 
@@ -486,7 +490,7 @@ function preload() {
 
   dialogues[29].endVideo = tainVideos[29];
 
-  let indices = [2, 4, 8, 10, 11, 12, 14, 18, 19, 20, 21, 22];
+  let indices = [2, 4, 8, 10, 11, 12, 14, 18, 19, 20, 21, 22,23];
 
   indices.forEach((index) => {
     dialogues[index].inputRequired = true;
@@ -525,9 +529,7 @@ function preload() {
   console.log("dummyvideoUnits loaded", dummyVideoUnits);
 }
 
-
 function setup() {
-
   api_key = prompt("Enter your API key");
 
   createCanvas(wdWidth, wdHeight);
@@ -709,7 +711,7 @@ function draw() {
           1080,
           height - 140
         );
-        fill(240,240,120);
+        fill(240, 240, 120);
         textSize(18);
         textAlign(CENTER, TOP);
         textFont("Orbit");
@@ -748,7 +750,7 @@ function draw() {
 
       recButton2.hide();
 
-        louderBGM();
+      louderBGM();
 
       if (speechReady) {
         volume = mic.getLevel();
@@ -800,26 +802,24 @@ function draw() {
           ttsSpeak();
           bgm.stop();
           big_stage += 1;
-          
-        } else{
+        } else {
+          if (millis() - lastChanged > messageDisplayTime) {
+            currentIndex = (currentIndex + 1) % loadingMessages.length;
+            lastChanged = millis();
+          }
 
-        if (millis() - lastChanged > messageDisplayTime) {
-          currentIndex = (currentIndex + 1) % loadingMessages.length;
-          lastChanged = millis();
+          fill(240);
+          textSize(28);
+          textAlign(CENTER, TOP);
+          textFont("Orbit");
+          text(
+            loadingMessages[currentIndex],
+            wdWidth / 2 - 440,
+            wdHeight - 210,
+            880,
+            height - 140
+          );
         }
-
-        fill(240);
-        textSize(28);
-        textAlign(CENTER, TOP);
-        textFont("Orbit");
-        text(
-          loadingMessages[currentIndex],
-          wdWidth / 2 - 440,
-          wdHeight - 210,
-          880,
-          height - 140
-        );
-      }
       }
 
       break;
@@ -836,25 +836,18 @@ function draw() {
 
       if (currentVideoIndex > 15) {
         dummyStart = true;
-
       }
 
-      if (currentVideoIndex>8){
-        
+      if (currentVideoIndex > 8) {
         let currentVolume = somoon.getVolume();
         if (currentVolume < maxVolume) {
           somoon.setVolume(currentVolume + volumeIncreaseRate);
         } else {
-         somoon.setVolume(maxVolume);
+          somoon.setVolume(maxVolume);
         }
       }
 
       if (currentVideoIndex > 8 && currentVideoIndex < 29) {
-
-        
-        
-        
-
         if (!intervalId) {
           intervalId = setInterval(() => {
             console.log("interval 실행");
@@ -963,17 +956,17 @@ function draw() {
 
       recButton2.hide();
 
-        if (currentStageOutro < 29) {
-          if (!dialogues[currentStageOutro].video.elt.ended) {
-            dialogues[currentStageOutro].textDisplay();
-            dialogues[currentStageOutro].display();
-          } else {
-            nextDialogue2();
-          }
+      if (currentStageOutro < 29) {
+        if (!dialogues[currentStageOutro].video.elt.ended) {
+          dialogues[currentStageOutro].textDisplay();
+          dialogues[currentStageOutro].display();
         } else {
-          console.log("case6으로 넘어가는중");
-          big_stage += 1;
+          nextDialogue2();
         }
+      } else {
+        console.log("case6으로 넘어가는중");
+        big_stage += 1;
+      }
 
       break;
 
@@ -1028,36 +1021,32 @@ function mouseClicked() {
   } else if (big_stage == 3) {
     ttsSpeak();
     //saveAndLoadImage();
-  }else if (big_stage == 6) {
+  } else if (big_stage == 6) {
     resetToStage1Time = 0;
   }
 }
 
 function gameStart() {
-  big_stage = 1;
-  //dialogues31videoPlayed = true;
-  //currentStageIntro = 19; // 서론(1~13, 질문 1,2, 6,7, 10,11)/ 결론부(15) 비디오 번호
+  big_stage = 2;
+  dialogues31videoPlayed = true;
+  currentStageIntro = 21; // 서론(1~13, 질문 1,2, 6,7, 10,11)/ 결론부(15) 비디오 번호
   //currentVideoIndex = 6; // 본론부
 }
 
 //-----서론부와 결론부 필요 코드--------------------------------------------------------------------------
 
-function louderBGM(){
-  
-      currentVolume2 = bgm.getVolume();
-      if (currentVolume2 < maxVolume2) {
-        bgm.setVolume(currentVolume2 + volumeIncreaseRate2);
-      } else {
-        bgm.setVolume(maxVolume2);
-      
-      }
-
+function louderBGM() {
+  currentVolume2 = bgm.getVolume();
+  if (currentVolume2 < maxVolume2) {
+    bgm.setVolume(currentVolume2 + volumeIncreaseRate2);
+  } else {
+    bgm.setVolume(maxVolume2);
+  }
 }
 
 function nextDialogue2() {
   console.log("nextdialogue2");
   currentStageOutro++;
-
 }
 
 function nextDialogue() {
@@ -1138,10 +1127,9 @@ function onSpeechEnd() {
 function keyPressed() {
   if (keyCode == ENTER) {
     sendMessage();
-  } else if (keyCode == 192){
+  } else if (keyCode == 192) {
     big_stage++;
   }
-
 }
 
 function record() {
@@ -1264,28 +1252,24 @@ function nextVideo() {
   currentVideoIndex++;
   currentDummyVideoIndex++;
 
-    ttsSpeak();
+  ttsSpeak();
 
-    if (currentVideoIndex > 0) {
-      videoUnits[currentVideoIndex - 1].textposY -= 40;
-    }
-    if (currentVideoIndex > 1) {
-      videoUnits[currentVideoIndex - 2].textposY -= 40;
-    }
-    if (currentVideoIndex > 2) {
-      videoUnits[currentVideoIndex - 3].textposY -= 40;
-    }
-
-
-
-  
-
-  if (currentVideoIndex==8){      
-  somoon.play();
-  console.log("somoonplay");
+  if (currentVideoIndex > 0) {
+    videoUnits[currentVideoIndex - 1].textposY -= 40;
+  }
+  if (currentVideoIndex > 1) {
+    videoUnits[currentVideoIndex - 2].textposY -= 40;
+  }
+  if (currentVideoIndex > 2) {
+    videoUnits[currentVideoIndex - 3].textposY -= 40;
   }
 
-if (currentVideoIndex < 29) {
+  if (currentVideoIndex == 8) {
+    somoon.play();
+    console.log("somoonplay");
+  }
+
+  if (currentVideoIndex < 29) {
     videoUnits[currentVideoIndex].playOnVideo();
   } else if (currentVideoIndex == 29) {
     console.log("모든 비디오 재생 완료");
