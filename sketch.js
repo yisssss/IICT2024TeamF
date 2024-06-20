@@ -1027,9 +1027,9 @@ function mouseClicked() {
 }
 
 function gameStart() {
-  big_stage = 2;
-  dialogues31videoPlayed = true;
-  currentStageIntro = 21; // 서론(1~13, 질문 1,2, 6,7, 10,11)/ 결론부(15) 비디오 번호
+  big_stage = 1;
+  //dialogues31videoPlayed = true;
+  //currentStageIntro = 21; // 서론(1~13, 질문 1,2, 6,7, 10,11)/ 결론부(15) 비디오 번호
   //currentVideoIndex = 6; // 본론부
 }
 
